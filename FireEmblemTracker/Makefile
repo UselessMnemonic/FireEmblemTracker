@@ -24,8 +24,8 @@ SOURCE_DIRS := source
 
 EXTRA_OUTPUT_FILES :=
 
-LIBRARY_DIRS := $(DEVKITPRO)/citrus $(DEVKITPRO)/libctru
-LIBRARIES := ctru m
+LIBRARY_DIRS := $(DEVKITPRO)/citrus $(DEVKITPRO)/libctru $(DEVKITPRO)/libsftd $(DEVKITPRO)/portlibs/armv6k $(DEVKITPRO)/libsf2d
+LIBRARIES := ctru citro3d sf2d sftd freetype z
 
 BUILD_FLAGS := -DLIBKHAX_AS_LIB -DVERSION_STRING="\"`git describe --tags --abbrev=0`\""
 RUN_FLAGS :=

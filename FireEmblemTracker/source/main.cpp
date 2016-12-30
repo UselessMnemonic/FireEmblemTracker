@@ -13,7 +13,7 @@ int main()
 
 	// Font loading
 	sftd_init();
-	sftd_font *font = sftd_load_font_mem(FreeSans_ttf, FreeSans_ttf_size);
+	sftd_font *font = sftd_load_font_file("fe.ttf");
 
 	const char *someText = "Font drawing on the top screen! Text wraps after 300 pixels... Lorem ipsum dolor sit amet, consetetur sadipscing elit.";
 	int textWidth = 0;
