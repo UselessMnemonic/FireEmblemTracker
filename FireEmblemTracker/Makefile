@@ -19,13 +19,13 @@ NAME := FET
 
 BUILD_DIR := build
 OUTPUT_DIR := output
-INCLUDE_DIRS := include res
-SOURCE_DIRS := source
+INCLUDE_DIRS := include
+SOURCE_DIRS := source res
 
 EXTRA_OUTPUT_FILES :=
 
 LIBRARY_DIRS := $(DEVKITPRO)/libctru $(DEVKITPRO)/libcitro3d $(DEVKITPRO)/portlibs/armv6k $(DEVKITPRO)/libsf2d $(DEVKITPRO)/libsftd
-LIBRARIES := ctru m citro3d z png freetype sf2d sftd
+LIBRARIES := sftd freetype png z sf2d citro3d ctru m
 
 BUILD_FLAGS := -DLIBKHAX_AS_LIB -DVERSION_STRING="\"`git describe --tags --abbrev=0`\""
 RUN_FLAGS :=

@@ -74,17 +74,17 @@
     <OutDir>$(ProjectDir)build</OutDir>
     <IntDir>$(ProjectDir)</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;$(ProjectDir)res</IncludePath>
+    <IncludePath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\source</IncludePath>
     <ReferencePath>
     </ReferencePath>
     <LibraryPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include</LibraryPath>
     <LibraryWPath />
     <SourcePath>$(ProjectDir)source</SourcePath>
     <ExcludePath>$(ProjectDir)build</ExcludePath>
-    <NMakeBuildCommandLine>make &amp; start make runhw -va</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>make runhw </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make --always-make</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;$(ProjectDir)res</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\source</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>FireEmblemTracker.exe</NMakeOutput>
