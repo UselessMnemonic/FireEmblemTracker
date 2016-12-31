@@ -4,6 +4,7 @@
 #include <3ds.h>
 #include <sf2d.h>
 #include <sftd.h>
+#include "FreeSans_otf.h"
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
 
 	// Font loading
 	sftd_init();
-	sftd_font *font = sftd_load_font_file("fe.ttf");
+	sftd_font *font = sftd_load_font_mem(FreeSans_otf, FreeSans_otf_size);
 
 	const char *someText = "Font drawing on the top screen! Text wraps after 300 pixels... Lorem ipsum dolor sit amet, consetetur sadipscing elit.";
 	int textWidth = 0;

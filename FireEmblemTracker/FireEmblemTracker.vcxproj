@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{842A91B7-DA78-4873-BBA5-2C9A3222248D}</ProjectGuid>
@@ -72,17 +74,17 @@
     <OutDir>$(ProjectDir)build</OutDir>
     <IntDir>$(ProjectDir)</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libctru\include;C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include</IncludePath>
+    <IncludePath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;$(ProjectDir)res</IncludePath>
     <ReferencePath>
     </ReferencePath>
-    <LibraryPath>C:\devkitPro\devkitARM\arm-none-eabi\lib</LibraryPath>
+    <LibraryPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include</LibraryPath>
     <LibraryWPath />
     <SourcePath>$(ProjectDir)source</SourcePath>
     <ExcludePath>$(ProjectDir)build</ExcludePath>
-    <NMakeBuildCommandLine>make &amp; start make runhw</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>make &amp; start make runhw -va</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make --always-make</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libctru\include;C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;$(ProjectDir)res</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>FireEmblemTracker.exe</NMakeOutput>
