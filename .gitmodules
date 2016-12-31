@@ -1,0 +1,3 @@
+[submodule "FireEmblemTracker/buildtools"]
+	path = FireEmblemTracker/buildtools
+	url = https://github.com/Steveice10/buildtools.git
