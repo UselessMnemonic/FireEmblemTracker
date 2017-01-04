@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\bgBttm.h" />
+    <ClCompile Include="include\bgTop.h" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
+    <None Include="res\FreeSans.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\menu.h" />
+    <ClInclude Include="include\res.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{842A91B7-DA78-4873-BBA5-2C9A3222248D}</ProjectGuid>
@@ -74,7 +82,7 @@
     <OutDir>$(ProjectDir)build</OutDir>
     <IntDir>$(ProjectDir)</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\source</IncludePath>
+    <IncludePath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\res;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\include</IncludePath>
     <ReferencePath>
     </ReferencePath>
     <LibraryPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include</LibraryPath>
@@ -84,7 +92,7 @@
     <NMakeBuildCommandLine>make runhw </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make --always-make</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\source</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\res;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\include</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>FireEmblemTracker.exe</NMakeOutput>

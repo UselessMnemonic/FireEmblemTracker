@@ -20,7 +20,7 @@ NAME := FET
 BUILD_DIR := build
 OUTPUT_DIR := output
 INCLUDE_DIRS := include
-SOURCE_DIRS := source res
+SOURCE_DIRS := res source
 
 EXTRA_OUTPUT_FILES :=
 
