@@ -1,17 +1,26 @@
 #include "menu.h"
-#include <3ds.h>
+#include "WavPlayer.h"
 
 int main()
 {
-	Menu mainMenu;
-	mainMenu.setBGM("bgm.wav", 120171);
+	Menu menu;
+	WavPlayer BGMPlayer;
+	BGMPlayer.loadBGM("bgm.wav", 120171);
+	BGMPlayer.playBGM();
+
+	menu.addWavPlayer(&BGMPlayer);
 
 	while (aptMainLoop())
 	{
 		hidScanInput();
-		if (hidKeysDown() & KEY_START)
-			break;
-		mainMenu.doMenuLoop();
+
+		if (hidKeysHeld() & KEY_START) break;
+
+		menu.doMenuLoop();
+		BGMPlayer.doBGMLoop();
 	}
+
+	BGMPlayer.stopBGM();
+
 	return 0;
 }

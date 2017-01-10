@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <3ds.h>
 
 class WavFile {
 
@@ -19,7 +18,10 @@ public:
 	u8 getu8AtX(long position);
 	bool isFileValid();
 	size_t readRawFileStream(void* buffer, size_t _size, size_t _n, long seek = -1); //functions exactly as fread, seek is independent of other fread calls, last long is for seek purposes
-	size_t readRawAudioStream(void* buffer, long numSamplesToRead, long startPositionInSamples = 0);
+	long readRawAudioStream(void* buffer, long numSamplesToRead, long startPositionInSamples = -1);
+	long getNumSamples();
+	long getSampleSeek();
+
 private:
 	FILE* file;
 	u16 audioFormat;
@@ -29,4 +31,6 @@ private:
 	u16 blockAlign;
 	u16 bitsPerSample;
 	u32 audioStreamSize;
+	long numSamples;
+	long sampleSeek;
 };

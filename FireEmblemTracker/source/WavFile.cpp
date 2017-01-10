@@ -26,6 +26,8 @@ u8 WavFile::getu8AtX(long x)
 
 WavFile::WavFile(const char* filename)
 {
+	romfsInit();
+	
 	file = fopen(filename, "rb");
 
 	if (file != NULL)
@@ -48,6 +50,15 @@ WavFile::WavFile(const char* filename)
 		bitsPerSample = 0;
 		audioStreamSize = 0;
 	}
+
+	fseek(file, 0, SEEK_END);
+	long fileSize = ftell(file);
+	fseek(file, 0, SEEK_SET);
+
+	fileSize -= 44;
+
+	numSamples = fileSize / blockAlign;
+	
 }
 
 WavFile::~WavFile()
@@ -105,21 +116,37 @@ size_t WavFile::readRawFileStream(void* buffer, size_t _size, size_t _n, long se
 	return res;
 }
 
-size_t WavFile::readRawAudioStream(void* buffer, long numSamplesToRead, long startPositionInSamples)//returns #samples read
+long WavFile::readRawAudioStream(void* buffer, long numSamplesToRead, long startPositionInSamples)//returns #samples read
 {
-	static long sampleSeek = 0;
+	if (sampleSeek == numSamples - 1)
+		return 0;
 
-	if (startPositionInSamples > -1)
-		sampleSeek = startPositionInSamples;
+	if (startPositionInSamples != -1) //if a start position was specified...
+		sampleSeek = startPositionInSamples; //use that start position
 
-		long startpos = AUD_STRM_OFFSET + (4 * sampleSeek);
-		fseek(file, startpos, SEEK_SET);
-		size_t readResult = fread(buffer, 1, (4*numSamplesToRead), file);
-		readResult /= 4;
-		return readResult;
+		long startpos = AUD_STRM_OFFSET + (blockAlign * sampleSeek); //find the start position in bytes
+
+
+		fseek(file, startpos, SEEK_SET); //seek to that position
+		long readResult = fread(buffer, 1, (blockAlign*numSamplesToRead), file); //read how ever many bytes to read
+		readResult /= blockAlign; //get the result of bytes read as samples read
+
+		sampleSeek += readResult; //set the next seek position to the next sample offset
+
+		return readResult; //return the number of samples read
 }
 
 bool WavFile::isFileValid()
 {
 	return (file != NULL);
+}
+
+long WavFile::getNumSamples()
+{
+	return numSamples;
+}
+
+long WavFile::getSampleSeek()
+{
+	return sampleSeek;
 }

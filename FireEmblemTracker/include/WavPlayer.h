@@ -1,6 +1,10 @@
 #pragma once
-#include "WavFile.h"
+#include <3ds.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+#include "WavFile.h"
 
 class WavPlayer
 {
@@ -11,18 +15,21 @@ public:
 	void loadBGM(const char* filename, long loopSample = 0);
 	void playBGM();
 
-	void loadSoundEffect();
+	//void loadSoundEffect(const char* filename);
 
-	void playSoundEffect();
+	//void playSoundEffect();
 
-	void unloadSoundEffect();
+	//void unloadSoundEffect();
 
 	void doBGMLoop();
 	void stopBGM();
+
+	WavFile* getWavFile();
+
 private:
 	WavFile* currentBGM;
 	bool BGMIsPlaying;
 	ndspWaveBuf wavBuffer[2];
 	s16 *buffer1 = NULL, *buffer2 = NULL;
-	long loopSample;
+	unsigned long loopSample;
 };
