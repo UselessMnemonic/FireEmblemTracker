@@ -4,11 +4,9 @@
 int main()
 {
 	Menu menu;
-	WavPlayer BGMPlayer;
+	WavPlayer BGMPlayer(2, (16*1024));
 	BGMPlayer.loadBGM("bgm.wav", 120171);
 	BGMPlayer.playBGM();
-
-	menu.addWavPlayer(&BGMPlayer);
 
 	while (aptMainLoop())
 	{

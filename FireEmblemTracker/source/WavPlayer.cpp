@@ -1,21 +1,29 @@
 #include <WavPlayer.h>
 
-#define BUFFER_SIZE (16 * 1024)
 #define BGM_CHANNEL 0x08
+#define SFX1_CHANNEL 0x09
+#define SFX2_CHANNEL 0x0A
+#define BUFFER_SIZE (const long)bufferSize
 
-
-WavPlayer::WavPlayer()
+WavPlayer::WavPlayer(int numBuffers, long bytesPerBuffer)
 {
 	currentBGM = NULL;
 	BGMIsPlaying = false;
 	loopSample = 0;
 	ndspInit();
 	ndspSetOutputMode(NDSP_OUTPUT_STEREO);
+	
+	numOfBuffers = numBuffers;
+	bufferSize = bytesPerBuffer;
+	wavBuffer = new ndspWaveBuf[numBuffers];
+	buffers = new s16*[numBuffers];
 }
 
 WavPlayer::~WavPlayer()
 {
 	ndspExit();
+	delete[] wavBuffer;
+	delete[] buffers;
 }
 
 void WavPlayer::loadBGM(const char* filename, long loopingSample)
@@ -53,26 +61,32 @@ void WavPlayer::playBGM()
 		ndspChnWaveBufClear(BGM_CHANNEL);
 		ndspChnSetInterp(BGM_CHANNEL, NDSP_INTERP_POLYPHASE);
 		ndspChnSetRate(BGM_CHANNEL, currentBGM->getSampleRate());
-
 		ndspChnSetFormat(BGM_CHANNEL, NDSP_FORMAT_STEREO_PCM16);
-		memset(wavBuffer, 0, sizeof(wavBuffer));
 
-		buffer1 = (s16*)linearAlloc(BUFFER_SIZE);
-		buffer2 = (s16*)linearAlloc(BUFFER_SIZE);
+		memset(wavBuffer, 0, sizeof(wavBuffer)*numOfBuffers);
 
-		u32 samplesRead = currentBGM->readRawAudioStream(buffer1, nsamples);
-		wavBuffer[0].nsamples = samplesRead;
+		u32 samplesRead;
 
-		wavBuffer[0].data_vaddr = &buffer1[0];
-		ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[0]);
+		for (int i = 0; i < numOfBuffers; i++)
+		{
+			/*wavBuffer[i].adpcm_data = 0;
+			wavBuffer[i].data_adpcm = 0;
+			wavBuffer[i].data_pcm16 = 0;
+			wavBuffer[i].data_pcm8 = 0;
+			wavBuffer[i].data_vaddr = 0;
+			wavBuffer[i].looping = 0;
+			wavBuffer[i].next = 0;
+			wavBuffer[i].nsamples = 0;
+			wavBuffer[i].offset = 0;
+			wavBuffer[i].sequence_id = 0;
+			wavBuffer[i].status = 0;*/
 
-
-
-		samplesRead = currentBGM->readRawAudioStream(buffer2, nsamples);
-		wavBuffer[1].nsamples = nsamples;
-
-		wavBuffer[1].data_vaddr = &buffer2[0];
-		ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[1]);
+			buffers[i] = (s16*)linearAlloc(BUFFER_SIZE);
+			samplesRead = currentBGM->readRawAudioStream(buffers[i], nsamples);
+			wavBuffer[i].nsamples = samplesRead;
+			wavBuffer[i].data_vaddr = &buffers[i];
+			ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[i]);
+		}
 
 		while (ndspChnIsPlaying(BGM_CHANNEL) == false);
 
@@ -85,8 +99,8 @@ void WavPlayer::stopBGM()
 	if (BGMIsPlaying)
 	{
 		ndspChnWaveBufClear(BGM_CHANNEL);
-		linearFree(buffer1);
-		linearFree(buffer2);
+		for(int i = 0; i < numOfBuffers; i++)
+			linearFree(buffers[i]);
 	}
 
 	BGMIsPlaying = false;
@@ -99,38 +113,28 @@ void WavPlayer::doBGMLoop()
 	
 	if (BGMIsPlaying)
 	{
-
-		if (wavBuffer[0].status == NDSP_WBUF_DONE)
+		for (int i = 0; i < numOfBuffers; i++)
 		{
-
-			samplesRead = currentBGM->readRawAudioStream(buffer1, nsamples);
-
-			if (samplesRead == 0)
+			if (wavBuffer[i].status == NDSP_WBUF_DONE)
 			{
-				samplesRead = currentBGM->readRawAudioStream(buffer1, nsamples, loopSample);
-			}
-			
-			wavBuffer[0].nsamples = samplesRead;
 
-			ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[0]);
+				samplesRead = currentBGM->readRawAudioStream(buffers[i], nsamples);
+
+				if (samplesRead == 0)
+				{
+					samplesRead = currentBGM->readRawAudioStream(buffers[i], nsamples, loopSample);
+				}
+
+				wavBuffer[i].nsamples = samplesRead;
+
+				ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[i]);
+			}
 		}
 
-		if (wavBuffer[1].status == NDSP_WBUF_DONE)
+		for (int i = 0; i < numOfBuffers; i++)
 		{
-			samplesRead = currentBGM->readRawAudioStream(buffer2, nsamples);
-
-			if (samplesRead == 0)
-			{
-				samplesRead = currentBGM->readRawAudioStream(buffer2, nsamples, loopSample);
-			}
-
-			wavBuffer[1].nsamples = samplesRead;
-
-			ndspChnWaveBufAdd(BGM_CHANNEL, &wavBuffer[1]);
+			DSP_FlushDataCache(buffers[i], BUFFER_SIZE);
 		}
-
-		DSP_FlushDataCache(buffer1, BUFFER_SIZE);
-		DSP_FlushDataCache(buffer2, BUFFER_SIZE);
 	}
 }
 

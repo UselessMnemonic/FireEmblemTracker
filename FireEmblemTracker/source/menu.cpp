@@ -35,8 +35,3 @@ void Menu::doMenuLoop()
 
 	sf2d_swapbuffers();
 }
-
-void Menu::addWavPlayer(WavPlayer* player)
-{
-	BGMForDebug = player;
-}

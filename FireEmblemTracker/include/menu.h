@@ -18,11 +18,9 @@ public:
 	Menu();
 	~Menu();
 	void doMenuLoop();
-	void addWavPlayer(WavPlayer*);
 
 private:
 	int textSize;
 	sf2d_texture* topBG, *bottomBG;
 	sftd_font* FEfont;
-	WavPlayer* BGMForDebug;
 };

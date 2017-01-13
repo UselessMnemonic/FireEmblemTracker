@@ -9,7 +9,7 @@
 class WavPlayer
 {
 public:
-	WavPlayer();
+	WavPlayer(int, long);
 	~WavPlayer();
 
 	void loadBGM(const char* filename, long loopSample = 0);
@@ -29,7 +29,11 @@ public:
 private:
 	WavFile* currentBGM;
 	bool BGMIsPlaying;
-	ndspWaveBuf wavBuffer[2];
-	s16 *buffer1 = NULL, *buffer2 = NULL;
-	unsigned long loopSample;
+	ndspWaveBuf* wavBuffer;
+	s16** buffers;
+
+	long bufferSize;
+	int numOfBuffers;
+
+	/*unsigned*/ long loopSample;
 };

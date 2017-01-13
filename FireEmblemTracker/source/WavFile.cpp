@@ -26,8 +26,6 @@ u8 WavFile::getu8AtX(long x)
 
 WavFile::WavFile(const char* filename)
 {
-	romfsInit();
-	
 	file = fopen(filename, "rb");
 
 	if (file != NULL)
