@@ -24,15 +24,6 @@
     <ClCompile Include="include\bgTop.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\WavFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WavPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -41,9 +32,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\res.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\WavFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>

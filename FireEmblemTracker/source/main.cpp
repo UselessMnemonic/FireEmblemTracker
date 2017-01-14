@@ -3,10 +3,10 @@
 
 int main()
 {
-	Menu menu;
-	WavPlayer BGMPlayer(2, (16*1024));
-	BGMPlayer.loadBGM("bgm.wav", 120171);
-	BGMPlayer.playBGM();
+	initMenu();
+	initWavPlayer(2, (16*1024));
+		loadBGM("bgm.wav", 120000/*120171*/);
+		startBGM();
 
 	while (aptMainLoop())
 	{
@@ -14,11 +14,14 @@ int main()
 
 		if (hidKeysHeld() & KEY_START) break;
 
-		menu.doMenuLoop();
-		BGMPlayer.doBGMLoop();
+		doMenuLoop();
+		doBGMLoop();
 	}
 
-	BGMPlayer.stopBGM();
+	stopBGM();
+
+	exitWavPlayer();
+	exitMenu();
 
 	return 0;
 }
