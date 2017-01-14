@@ -42,7 +42,7 @@ u8 getu8AtX(long x, FILE* file)
 	return result;
 }
 
-void openWavFile(const char* filename, WavFile* wf, long loopStartSample = 0)
+void openWavFile(const char* filename, WavFile* wf, long loopStartSample)
 {
 	wf->file = fopen(filename, "rb");
 
@@ -86,9 +86,6 @@ void closeWavFile(WavFile* wf)
 
 long readRawAudioStream(WavFile* wf, void* buffer, long numSamplesToRead)//returns #samples read
 {
-	if (wf->sampleSeek == wf->numSamples - 1)
-		wf->sampleSeek = wf->loopingSample;
-
 	long startpos = AUD_STRM_OFFSET + (wf->blockAlign * wf->sampleSeek); //find the start position in bytes
 
 
@@ -97,6 +94,9 @@ long readRawAudioStream(WavFile* wf, void* buffer, long numSamplesToRead)//retur
 	readResult /= wf->blockAlign; //get the result of bytes read as samples read
 
 	wf->sampleSeek += readResult; //set the next seek position to the next sample offset
+
+	if (numSamplesToRead > readResult) //if we read more than available, we've reached EOF; next read starts at loop sample
+		wf->sampleSeek = wf->loopingSample;
 
 	return readResult; //return the number of samples read
 }

@@ -46,7 +46,7 @@ void exitWavPlayer()
 	delete[] buffers;
 }
 
-void loadBGM(const char* filename, long loopingSample = 0)
+void loadBGM(const char* filename, long loopingSample)
 {
 	if (!BGMIsPlaying)
 	{
