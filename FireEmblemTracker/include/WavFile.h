@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "ResourceManager.h"
+
 struct WavFile
 {
 	FILE* file;
@@ -44,7 +46,7 @@ u8 getu8AtX(long x, FILE* file)
 
 void openWavFile(const char* filename, WavFile* wf, long loopStartSample)
 {
-	wf->file = fopen(filename, "rb");
+	wf->file = rm_open(filename, "rb");
 
 	if (wf->file != NULL)
 	{

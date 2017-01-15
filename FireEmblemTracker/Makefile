@@ -24,8 +24,8 @@ SOURCE_DIRS := res source
 
 EXTRA_OUTPUT_FILES :=
 
-LIBRARY_DIRS := $(DEVKITPRO)/libctru $(DEVKITPRO)/libcitro3d $(DEVKITPRO)/portlibs/armv6k $(DEVKITPRO)/libsf2d $(DEVKITPRO)/libsftd
-LIBRARIES := sftd freetype png z sf2d citro3d ctru m
+LIBRARY_DIRS := $(DEVKITPRO)/libctru $(DEVKITPRO)/libcitro3d $(DEVKITPRO)/portlibs/armv6k $(DEVKITPRO)/libsf2d $(DEVKITPRO)/libsftd $(DEVKITPRO)/libsfil
+LIBRARIES := sfil sftd freetype png z sf2d citro3d ctru m
 
 BUILD_FLAGS := -DLIBKHAX_AS_LIB -DVERSION_STRING="\"`git describe --tags --abbrev=0`\""
 RUN_FLAGS :=
@@ -42,7 +42,7 @@ TITLE := Fire Emblem Tracker
 DESCRIPTION := FE Save Edit
 AUTHOR := Nihil
 PRODUCT_CODE := NHL-C-BETA
-UNIQUE_ID := 0x0000
+UNIQUE_ID := 0xFF3CC
 
 SYSTEM_MODE := 64MB
 SYSTEM_MODE_EXT := Legacy

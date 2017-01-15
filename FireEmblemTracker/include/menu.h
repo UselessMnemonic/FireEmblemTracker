@@ -7,19 +7,19 @@
 #include <sf2d.h>
 #include <sftd.h>
 
-#include <FreeSans_bin.h>
-#include "bgBttm.h"
-#include "bgTop.h"
+#include "ResourceManager.h"
 
 sftd_font *FEfont;
 sf2d_texture *bottomBG, *topBG;
 int textSize;
 
+
+
 void doMenuLoop()
 {
 	sf2d_start_frame(GFX_TOP, GFX_LEFT);
 	sf2d_draw_texture(topBG, 0, 0);
-	sftd_draw_text(FEfont, 5, 5, RGBA8(255, 255, 255, 255), textSize, "Uhm?");
+	
 	sf2d_end_frame();
 
 	sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);

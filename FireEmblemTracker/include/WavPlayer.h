@@ -15,7 +15,6 @@
 #define BGM_CHANNEL 0x08
 #define SFX1_CHANNEL 0x09
 #define SFX2_CHANNEL 0x0A
-#define BUFFER_SIZE bufferSize
 
 WavFile currentBGM;
 bool BGMIsPlaying;
@@ -59,7 +58,7 @@ void startBGM()
 {
 	if (!BGMIsPlaying) //if the BGM isn't already playing...
 	{
-		unsigned long nsamples = (BUFFER_SIZE / currentBGM.blockAlign);
+		unsigned long nsamples = (bufferSize / currentBGM.blockAlign);
 
 		ndspChnReset(BGM_CHANNEL);
 		ndspChnWaveBufClear(BGM_CHANNEL);
@@ -83,7 +82,7 @@ void startBGM()
 			wavBuffer[i].sequence_id = 0;
 			wavBuffer[i].status = 0;
 
-			buffers[i] = (s16*)linearAlloc(BUFFER_SIZE);
+			buffers[i] = (s16*)linearAlloc(bufferSize);
 			samplesRead = readRawAudioStream(&currentBGM, buffers[i], nsamples);
 			wavBuffer[i].nsamples = samplesRead;
 			wavBuffer[i].data_vaddr = &buffers[i][0];
@@ -112,7 +111,7 @@ void stopBGM()
 
 void doBGMLoop()
 {
-	unsigned long nsamples = BUFFER_SIZE / currentBGM.blockAlign;
+	unsigned long nsamples = bufferSize / currentBGM.blockAlign;
 	unsigned long samplesRead = 0;
 
 	if (BGMIsPlaying)
@@ -132,7 +131,7 @@ void doBGMLoop()
 
 		for (int i = 0; i < numOfBuffers; i++)
 		{
-			DSP_FlushDataCache(buffers[i], BUFFER_SIZE);
+			DSP_FlushDataCache(buffers[i], bufferSize);
 		}
 	}
 }

@@ -18,16 +18,10 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\bgBttm.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\bgTop.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
-    <None Include="res\FreeSans.bin">
+    <None Include="res\FEFont.bin">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -39,6 +33,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
