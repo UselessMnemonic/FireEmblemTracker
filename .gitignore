@@ -247,3 +247,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+*.elf
+FireEmblemTracker/FireEmblemTracker.elf
