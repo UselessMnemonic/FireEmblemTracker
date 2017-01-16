@@ -21,7 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
-    <None Include="res\FEFont.bin">
+    <None Include="data\FEFont.bin">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -36,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

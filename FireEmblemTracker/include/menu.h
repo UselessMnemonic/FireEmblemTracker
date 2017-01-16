@@ -6,8 +6,7 @@
 
 #include <sf2d.h>
 #include <sftd.h>
-
-#include "ResourceManager.h"
+#include <sfil.h>
 
 sftd_font *FEfont;
 sf2d_texture *bottomBG, *topBG;
@@ -38,9 +37,9 @@ void initMenu()
 	sftd_init();
 
 	textSize = 12;
-	FEfont = sftd_load_font_mem(FreeSans_bin, FreeSans_bin_len);
-	bottomBG = sf2d_create_texture_mem_RGBA8(BGBottom.pixel_data, BGBottom.width, BGBottom.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-	topBG = sf2d_create_texture_mem_RGBA8(BGTop.pixel_data, BGTop.width, BGTop.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+	FEfont = sftd_load_font_file("romfs:/FEFont.bin");
+	bottomBG = sfil_load_PNG_file("romfs:/bgBttm.png", SF2D_PLACE_RAM);
+	topBG = sfil_load_PNG_file("romfs:/bgTop.png", SF2D_PLACE_RAM);
 }
 
 void exitMenu()

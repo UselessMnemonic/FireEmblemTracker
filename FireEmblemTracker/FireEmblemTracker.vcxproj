@@ -23,11 +23,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
-    <None Include="res\FEFont.bin" />
+    <None Include="data\FEFont.bin" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\menu.h" />
-    <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\textures.h" />
     <ClInclude Include="include\WavFile.h" />
     <ClInclude Include="include\WavPlayer.h" />
@@ -82,7 +81,7 @@
     <OutDir>$(ProjectDir)build</OutDir>
     <IntDir>$(ProjectDir)</IntDir>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\devkitPro\libsfil\include;C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\res;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\include</IncludePath>
+    <IncludePath>C:\devkitPro\libsfil\include;C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\include</IncludePath>
     <ReferencePath>
     </ReferencePath>
     <LibraryPath>
@@ -90,7 +89,7 @@
     <LibraryWPath />
     <SourcePath>$(ProjectDir)source</SourcePath>
     <ExcludePath>$(ProjectDir)build</ExcludePath>
-    <NMakeBuildCommandLine>make runhw </NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>make</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>make --always-make</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>make clean</NMakeCleanCommandLine>
     <NMakeIncludeSearchPath>C:\devkitPro\libsfil\include;C:\devkitPro\devkitARM\arm-none-eabi\include;C:\devkitPro\libctru\include;C:\devkitPro\libcitro3d\include;C:\devkitPro\portlibs\armv6k\include;C:\devkitPro\libsf2d\include;C:\devkitPro\libsftd\include;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\build\3ds-arm\res;C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\include</NMakeIncludeSearchPath>
