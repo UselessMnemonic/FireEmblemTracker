@@ -1,1 +1,1 @@
-C:\Users\Owner\Desktop\FET\FireEmblemTracker\FireEmblemTracker\buildtools\3ds\makerom64 -f cia -o FireEmblemTracker.cia -elf FireEmblemTracker.elf -icon meta\icon.icn -banner meta\banner.bnr -rsf FET.rsf
+buildtools\3ds\makerom64 -f cia -o FireEmblemTracker.cia -elf FireEmblemTracker.elf -icon meta\icon.icn -banner meta\banner.bnr -rsf FET.rsf
