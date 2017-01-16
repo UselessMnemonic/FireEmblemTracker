@@ -6,6 +6,10 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.3dsx
+*.cia
+*.elf
+*.smdh
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
